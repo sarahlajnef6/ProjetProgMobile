@@ -1,0 +1,6 @@
+-git
+-gitignore
+vendor
+.env.local
+var/cache
+var/log
