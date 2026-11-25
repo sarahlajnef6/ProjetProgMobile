@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 COPY . .
+RUN touch .env
 
 RUN mkdir -p var/cache var/log
 
