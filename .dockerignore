@@ -1,6 +1,7 @@
--git
--gitignore
+.git
+.gitignore
 vendor
+.env
 .env.local
 var/cache
 var/log

@@ -13,12 +13,12 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 COPY . .
 
-# Create .env file for Symfony
-RUN printf 'APP_ENV=prod\nAPP_DEBUG=0\n' > .env
+RUN mkdir -p var/cache var/log
 
-RUN composer install --no-interaction --no-scripts
+RUN composer install --no-interaction --no-dev --optimize-autoloader --no-scripts
+
+RUN APP_ENV=prod APP_DEBUG=0 php bin/console cache:clear
 
 EXPOSE 8000
 
-CMD ["php", "-S", "0.0.0.0:8000", "-t", "public", "public/index.php"]
-
+CMD ["sh", "-c", "php -S 0.0.0.0:${PORT:-8000} -t public public/index.php"]
