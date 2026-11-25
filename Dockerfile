@@ -17,7 +17,6 @@ RUN mkdir -p var/cache var/log
 
 RUN composer install --no-interaction --no-dev --optimize-autoloader --no-scripts
 
-RUN APP_ENV=prod APP_DEBUG=0 php bin/console cache:clear
 
 EXPOSE 8000
 
